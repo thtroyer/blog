@@ -6,18 +6,16 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BlogController extends AbstractController
+class ContactController extends AbstractController
 {
 
     /**
-     * @Route("/")
-     * @Route("/blog")
-     * @Route("/blog/{postName}")
+     * @Route("/contact")
      */
     public function showPost($postName = "default")
     {
         return $this->render(
-            'blog.html.twig',
+            'contact.html.twig',
             [
                 'title' => $postName,
             ]
