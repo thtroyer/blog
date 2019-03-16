@@ -1,41 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Test title{% endblock %}
+{% block title %}Coding is Hard | {{ title }}{% endblock %}
 
 
 {% block body %}
-<div class="container">
-    <div>
-        <h1>{{ title }}</h1>
-    </div>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida sed eros id porttitor. Nam consectetur dui vel enim vulputate sollicitudin. Aliquam porttitor urna quis dui bibendum mollis. Mauris pharetra tempus ante. Nam porta, lectus vel hendrerit egestas, metus orci consectetur lorem, eget egestas augue massa in tortor. Aliquam semper elit eget nulla tempus eleifend. Nulla porttitor consequat consectetur. Mauris ornare leo turpis, quis semper diam blandit at. Integer nunc erat, pulvinar vel lectus id, imperdiet auctor nibh. Vivamus tristique velit vel eleifend rhoncus. Phasellus at nulla sit amet quam pharetra ornare sed congue dui.
-    </p>
-    <p>
-        Suspendisse porta aliquet libero, quis euismod ex blandit ut. Suspendisse at fringilla ante. Suspendisse a leo neque. Donec consequat sollicitudin commodo. Aliquam efficitur ac justo ut pellentesque. Nulla fermentum et odio sit amet ullamcorper. Proin suscipit orci a mattis maximus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec placerat tellus sed risus vulputate rutrum. Curabitur porttitor, nibh a laoreet ultricies, ipsum velit condimentum arcu, ac ultrices est ipsum sed metus. Suspendisse mattis, nunc eu varius euismod, lorem ante posuere purus, cursus molestie risus turpis id urna.
-    </p>
-    <p>
-        Ut augue mauris, rutrum vitae varius ut, mattis quis eros. Sed eget nunc quis arcu feugiat luctus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc massa augue, ultrices in elit in, sodales varius nisi. Ut ornare, arcu eu hendrerit malesuada, mauris ex vulputate massa, a mollis turpis leo sit amet diam. In venenatis lacinia ultricies. Morbi dignissim scelerisque accumsan. In hendrerit urna a felis imperdiet, in rutrum massa posuere. Nam sit amet vestibulum tortor. Nullam cursus congue metus quis finibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque euismod, arcu eu malesuada porta, dui ex interdum ex, at viverra justo quam id nisi. Donec vitae mollis dolor. Etiam mattis, felis ut fermentum interdum, turpis velit sodales magna, ut condimentum augue velit viverra tortor. Etiam commodo pellentesque libero pretium tincidunt.
-    </p>
-    <p>
-        Sed in odio lorem. Sed at lectus ut arcu bibendum venenatis. Suspendisse potenti. Proin semper ut arcu sit amet porttitor. Cras rutrum diam sit amet ligula faucibus feugiat. Pellentesque leo purus, cursus id eleifend id, molestie vulputate leo. Sed vel velit tempor, egestas odio sit amet, vulputate urna. Aenean et semper neque. Cras rutrum mauris nec dignissim tristique. Donec sem est, pellentesque vel lorem non, pellentesque lacinia justo. Integer mollis mauris vitae metus scelerisque malesuada. Quisque non nulla id tellus pretium rhoncus lobortis a purus. Fusce euismod aliquet felis.
-    </p>
-    <p>
-        Ut aliquam nisl tellus, nec pulvinar sapien ultricies non. Fusce at eleifend diam. Aliquam erat volutpat. Aliquam erat volutpat. Cras vitae leo nisi. Praesent sed lacus pharetra, mattis ex et, gravida odio. Praesent mollis ligula vel purus imperdiet accumsan. Curabitur ultrices enim lectus, a imperdiet ipsum ultricies eget. Fusce et leo eleifend, venenatis eros quis, faucibus ante. Nam a sodales est. Vestibulum aliquet varius enim, congue lobortis sapien varius eu.</p>
-    </p>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                One of three columns
+        <h1>{{ title }}</h1>
+        <p>
+            Blog articles go here...
+        </p>
+        <div class="card-columns">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Article 1</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="/blog/1" class="card-link">Card link</a>
+                </div>
             </div>
-            <div class="col-md-4">
-                One of three columns
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Article 2</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida sed eros id porttitor.</p>
+                    <a href="/blog/2" class="card-link">Card link</a>
+                </div>
             </div>
-            <div class="col-md-4">
-                One of three columns
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Article 3</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida sed eros id porttitor.</p>
+                    <a href="/blog/3" class="card-link">Card link</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Article 4</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida sed eros id porttitor. Donec gravida sed eros id porttitor.</p>
+                    <a href="/blog/4" class="card-link">Card link</a>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 {%  endblock %}
 
