@@ -5,6 +5,12 @@ html {
 body {
     margin-bottom: 60px; /* Margin bottom by footer height */
 }
+header {
+    width: 100%;
+    height: 200px;
+    background: url("/images/602206_10102231462258678_1783641411_n.jpg") center center no-repeat;
+    background-size: cover;
+}
 .footer {
     position: absolute;
     bottom: 0;
