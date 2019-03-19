@@ -10,8 +10,8 @@ class BlogController extends AbstractController
 {
 
     /**
-     * @Route("/")
-     * @Route("/blog")
+     * @Route("/", name="homepage")
+     * @Route("/blog", name="blog_homepage")
      */
     public function blogHome($postName = "Some blog title")
     {
@@ -24,7 +24,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/{postName}")
+     * @Route("/blog/{postName}", name="blog_page")
      */
     public function showPost($postName = "No title.")
     {

@@ -10,7 +10,7 @@ class ContactController extends AbstractController
 {
 
     /**
-     * @Route("/contact")
+     * @Route("/contact", name="contact_page")
      */
     public function showPost($postName = "default")
     {

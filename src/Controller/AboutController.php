@@ -10,7 +10,7 @@ class AboutController extends AbstractController
 {
 
     /**
-     * @Route("/about")
+     * @Route("/about", name="about_page")
      */
     public function showPost($postName = "default")
     {
