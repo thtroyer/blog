@@ -24,7 +24,7 @@ class AboutController extends AbstractController
                 'id' => $user->getId(),
                 'name' => $user->getNameToShow(),
                 'username' => $user->getUsername(),
-                'dateCreated' => $user->getDateCreated()->format('Y-m-d H:i:s'),
+                'dateCreated' => $user->getCreatedDate()->format('Y-m-d H:i:s'),
                 'lastModified' => $user->getLastModified()->format('Y-m-d H:i:s'),
             ];
         }

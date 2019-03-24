@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Article
 {
@@ -65,9 +66,30 @@ class Article
     private $publishedDate;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdDate;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $lastModified;
+
+    public function __construct()
+    {
+        $this->setCreatedDate(new \DateTime());
+        if ($this->getModified() == null) {
+            $this->setModified(new \DateTime());
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function updateLastModified() {
+        $this->setLastModified(new \DateTime());
+    }
 
     public function getId(): ?int
     {
@@ -172,6 +194,16 @@ class Article
         $this->publishedDate = $publishedDate;
 
         return $this;
+    }
+
+    public function getCreatedDate() : ?\DateTimeInterface
+    {
+        return $this->createdDate;
+    }
+
+    public function setCreatedDate(\DateTimeInterface $createdDate): void
+    {
+        $this->createdDate = $createdDate;
     }
 
     public function getLastModified(): ?\DateTimeInterface
