@@ -4,13 +4,12 @@
 
 
 {% block body %}
+    <h1>Blog</h1>
+{% if featuredArticles %}
     <div class="container">
-        <h1>Blog</h1>
-        <p>
-            Blog articles go here...
-        </p>
+        <h2>Featured and recent articles</h2>
         <div class="card-columns">
-{% for article in articles %}
+{% for article in featuredArticles %}
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ article.title }}</h5>
@@ -21,7 +20,24 @@
             </div>
 {% endfor %}
         </div>
-</div>
+    </div>
+    <hr />
+{% endif %}
+    <div class="container">
+        <h2>Articles</h2>
+        <div class="card-columns">
+            {% for article in articles %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ article.subtext }}</h6>
+                        <p class="card-text">{{ article.summary }}</p>
+                        <a href="/blog/{{ article.slug }}" class="card-link">Card link</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {%  endblock %}
 
 {% block javascripts %}

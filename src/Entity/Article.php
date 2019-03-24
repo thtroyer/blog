@@ -55,6 +55,11 @@ class Article
     private $enabled;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $featuredPriority;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $publishedDate;
@@ -147,6 +152,16 @@ class Article
         return $this;
     }
 
+    public function getFeaturedPriority(): int
+    {
+        return $this->featuredPriority;
+    }
+
+    public function setFeaturedPriority(int $featuredPriority): void
+    {
+        $this->featuredPriority = $featuredPriority;
+    }
+
     public function getPublishedDate(): ?\DateTimeInterface
     {
         return $this->publishedDate;
@@ -169,5 +184,14 @@ class Article
         $this->lastModified = $lastModified;
 
         return $this;
+    }
+
+    public function isRecent() :bool
+    {
+        $oneWeekAgo = new \DateTime();
+        $weekInterval = new \DateInterval('P1W');
+        $oneWeekAgo->sub($weekInterval);
+
+        return $this->getPublishedDate() >= $oneWeekAgo;
     }
 }

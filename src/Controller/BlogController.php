@@ -20,11 +20,13 @@ class BlogController extends AbstractController
     {
 
         $articleRepository = $entityManager->getRepository(Article::class);
-        $articles = $articleRepository->findAll();
+        $articles = $articleRepository->findAllActiveNewestFirst();
+        $featuredArticles = $articleRepository->findAllActiveFeatured();
 
         return $this->render(
             'blog.html.twig',
             [
+                'featuredArticles' => $featuredArticles,
                 'articles' => $articles,
             ]
         );
