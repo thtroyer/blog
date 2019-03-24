@@ -30,9 +30,19 @@ class Article
     private $user;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $text;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $summary;
 
     /**
      * @ORM\Column(type="boolean")
@@ -48,11 +58,6 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $lastModified;
-
-    public function __construct()
-    {
-        $this->articleText = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -83,6 +88,16 @@ class Article
         return $this;
     }
 
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): void
+    {
+        $this->title = $title;
+    }
+
     public function getText(): ?string
     {
         return $this->text;
@@ -93,6 +108,16 @@ class Article
         $this->text = $text;
 
         return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(?string $summary): void
+    {
+        $this->summary = $summary;
     }
 
     public function getEnabled(): ?bool
