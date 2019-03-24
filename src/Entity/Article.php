@@ -45,6 +45,11 @@ class Article
     private $summary;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $subtext;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $enabled;
@@ -118,6 +123,16 @@ class Article
     public function setSummary(?string $summary): void
     {
         $this->summary = $summary;
+    }
+
+    public function getSubtext(): ?string
+    {
+        return $this->subtext;
+    }
+
+    public function setSubtext(?string $subtext): void
+    {
+        $this->subtext = $subtext;
     }
 
     public function getEnabled(): ?bool

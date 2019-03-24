@@ -1,47 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Coding is Hard | {{ title }}{% endblock %}
+{% block title %}Coding is Hard | Blog Home{% endblock %}
 
 
 {% block body %}
     <div class="container">
-        <h1>{{ title }}</h1>
+        <h1>Blog</h1>
         <p>
             Blog articles go here...
         </p>
         <div class="card-columns">
+{% for article in articles %}
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Article 1</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="/blog/1" class="card-link">Card link</a>
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ article.subtext }}</h6>
+                    <p class="card-text">{{ article.summary }}</p>
+                    <a href="/blog/{{ article.slug }}" class="card-link">Card link</a>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Article 2</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida sed eros id porttitor.</p>
-                    <a href="/blog/2" class="card-link">Card link</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Article 3</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida sed eros id porttitor.</p>
-                    <a href="/blog/3" class="card-link">Card link</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Article 4</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Article about something</h6>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida sed eros id porttitor. Donec gravida sed eros id porttitor.</p>
-                    <a href="/blog/4" class="card-link">Card link</a>
-                </div>
-            </div>
+{% endfor %}
         </div>
 </div>
 {%  endblock %}

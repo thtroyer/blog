@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,18 +16,16 @@ class BlogController extends AbstractController
      * @Route("/", name="homepage")
      * @Route("/blog", name="blog_homepage")
      */
-    public function blogHome($postName = "Some blog title")
+    public function blogHome(EntityManagerInterface $entityManager)
     {
 
         $articleRepository = $entityManager->getRepository(Article::class);
-        $article = $articleRepository->findOneBy(['slug' => $slug]);
-        $postName = $article->getTitle();
-        $postContents = $article->getText();
+        $articles = $articleRepository->findAll();
 
         return $this->render(
             'blog.html.twig',
             [
-                'title' => $postName,
+                'articles' => $articles,
             ]
         );
     }
