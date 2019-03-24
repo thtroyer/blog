@@ -30,9 +30,9 @@ class Article
     private $user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ArticleText", inversedBy="articles")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $articleText;
+    private $text;
 
     /**
      * @ORM\Column(type="boolean")
@@ -83,28 +83,14 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection|ArticleText[]
-     */
-    public function getArticleText(): Collection
+    public function getText(): ?string
     {
-        return $this->articleText;
+        return $this->text;
     }
 
-    public function addArticleText(ArticleText $articleText): self
+    public function setText(?string $text): self
     {
-        if (!$this->articleText->contains($articleText)) {
-            $this->articleText[] = $articleText;
-        }
-
-        return $this;
-    }
-
-    public function removeArticleText(ArticleText $articleText): self
-    {
-        if ($this->articleText->contains($articleText)) {
-            $this->articleText->removeElement($articleText);
-        }
+        $this->text = $text;
 
         return $this;
     }
