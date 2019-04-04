@@ -9,8 +9,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>New Blog Post<h1>
 
-    {{ form(form) }}
+    {{ form_start(newArticleForm) }}
+    {{ form_widget(newArticleForm) }}
+        <button type="submit" class="btn btn-primary">Create</button>
+    {{ form_end(newArticleForm) }}
 </div>
 {% endblock %}

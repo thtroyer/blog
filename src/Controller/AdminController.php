@@ -21,14 +21,12 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/article/new", name="new_article")
      */
-    public function new_article(BlogPostFormType $blogForm)
+    public function new_article()
     {
-        $builder = $this->createFormBuilder();
-        $blogForm->buildForm($builder, []);
-        $form = $builder->getForm();
+        $form = $this->createForm(BlogPostFormType::class);
         return $this->render('admin/index.html.twig', [
             'controller_name' => 'AdminController',
-            'form' => $form->createView(),
+            'newArticleForm' => $form->createView(),
         ]);
     }
 }
