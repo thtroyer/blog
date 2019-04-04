@@ -78,8 +78,8 @@ class Article
     public function __construct()
     {
         $this->setCreatedDate(new \DateTime());
-        if ($this->getModified() == null) {
-            $this->setModified(new \DateTime());
+        if ($this->getLastModified() == null) {
+            $this->getLastModified(new \DateTime());
         }
     }
 
