@@ -20,18 +20,13 @@ class BlogPostFormType extends AbstractType
             ->add('enabled')
             ->add('featuredPriority')
             ->add('publishedDate')
-            ->add('createdDate')
-            ->add('lastModified')
-            ->add('user')
         ;
     }
 
-    /*
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Article::class,
         ]);
     }
-    */
 }

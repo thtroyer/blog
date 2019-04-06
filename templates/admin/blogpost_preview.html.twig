@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coding is Hard | {{ title }}{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <h1>Admin Preview</h1>
+    <a href="{{ path('admin_article_list') }}">Back to article list</a>
+    <hr />
+    <h1>{{ title }}</h1>
+    <div id="contents">{{ post|markdown }}</div>
+</div>
+{%  endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#js-nav-blog').addClass('active');
+    </script>
+{%  endblock %}

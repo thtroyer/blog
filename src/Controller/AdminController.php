@@ -24,7 +24,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/article/", name="admin_article")
+     * @Route("/admin/article/", name="admin_article_list")
      */
     public function articleList(EntityManagerInterface $entityManager, Request $request, UserRepository $userRepository)
     {
@@ -48,15 +48,7 @@ class AdminController extends AbstractController
             $userRepository = $entityManager->getRepository(User::class);
             $user = $userRepository->findOneBy(['id' => 1]);
 
-            $data = $form->getData();
-            $article = new Article();
-            $article->setSlug($data['slug']);
-            $article->setTitle($data['title']);
-            $article->setText($data['text']);
-            $article->setSummary($data['summary']);
-            $article->setSubtext($data['subtext']);
-            $article->setEnabled($data['enabled']);
-            $article->setFeaturedPriority($data['featuredPriority']);
+            $article = $form->getData();
             $article->setUser($user);
             $entityManager->persist($article);
             $entityManager->flush();
@@ -65,5 +57,44 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
             'newArticleForm' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/admin/article/edit/{id}", name="admin_edit_article")
+     */
+    public function editArticle(EntityManagerInterface $entityManager, Request $request, Article $article)
+    {
+        $form = $this->createForm(BlogPostFormType::class, $article);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article = $form->getData();
+            $entityManager->persist($article);
+            $entityManager->flush();
+        }
+
+        return $this->render('admin/edit_article.html.twig', [
+            'controller_name' => 'AdminController',
+            'newArticleForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/article/preview/{id}", name="admin_preview_article")
+     */
+    public function previewArticle($id, EntityManagerInterface $entityManager, Request $request, Article $article)
+    {
+        $articleRepository = $entityManager->getRepository(Article::class);
+        $article = $articleRepository->findOneBy(['id' => $id]);
+        $postName = $article->getTitle();
+        $postContents = $article->getText();
+
+        return $this->render(
+            'admin/blogpost_preview.html.twig',
+            [
+                'title' => $postName,
+                'post' => $postContents,
+            ]
+        );
     }
 }
