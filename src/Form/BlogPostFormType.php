@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +20,9 @@ class BlogPostFormType extends AbstractType
             ->add('subtext')
             ->add('enabled')
             ->add('featuredPriority')
-            ->add('publishedDate')
+            ->add('publishedDate', DateTimeType::class, [
+                'date_widget' => 'single_text',
+            ])
             ->add('user')
         ;
     }
