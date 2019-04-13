@@ -20,6 +20,7 @@ class BlogPostFormType extends AbstractType
             ->add('enabled')
             ->add('featuredPriority')
             ->add('publishedDate')
+            ->add('user')
         ;
     }
 
