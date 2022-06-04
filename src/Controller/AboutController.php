@@ -14,8 +14,9 @@ class AboutController extends AbstractController
     /**
      * @Route("/about", name="about_page")
      */
-    public function showPost($postName = "default", EntityManagerInterface $entityManager)
+    public function showPost(EntityManagerInterface $entityManager)
     {
+        $postName = "default";
         $userRepository = $entityManager->getRepository(User::class);
         $users = $userRepository->findAll();
         $user_data = [];
