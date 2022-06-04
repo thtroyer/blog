@@ -11,11 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
 
-    /**
-     * @Route("/", name="homepage")
-     * @Route("/blog", name="blog_homepage")
-     */
-    public function blogHome(EntityManagerInterface $entityManager)
+    #[Route("/", name: "homepage")]
+    #[Route("/blog", name: "blog_homepage")]
+    public function blogHome(EntityManagerInterface $entityManager): \Symfony\Component\HttpFoundation\Response
     {
 
         $articleRepository = $entityManager->getRepository(Article::class);
@@ -31,10 +29,8 @@ class BlogController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/blog/{slug}", name="blog_page")
-     */
-    public function showPost($slug, EntityManagerInterface $entityManager)
+    #[Route("/blog/{slug}", name: "blog_page")]
+    public function showPost($slug, EntityManagerInterface $entityManager): \Symfony\Component\HttpFoundation\Response
     {
         $articleRepository = $entityManager->getRepository(Article::class);
         $article = $articleRepository->findOneBy(['slug' => $slug]);

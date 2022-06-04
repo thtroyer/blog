@@ -11,11 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class AboutController extends AbstractController
 {
 
-    /**
-     * @Route("/about", name="about_page")
-     */
-    public function showPost(EntityManagerInterface $entityManager)
-    {
+     #[Route("/about", name: "about_page")]
+    public function showPost(EntityManagerInterface $entityManager): \Symfony\Component\HttpFoundation\Response
+     {
         $postName = "default";
         $userRepository = $entityManager->getRepository(User::class);
         $users = $userRepository->findAll();
