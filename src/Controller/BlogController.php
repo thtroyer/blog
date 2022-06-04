@@ -41,7 +41,7 @@ class BlogController extends AbstractController
             'blogpost.html.twig',
             [
                 'title' => $postName,
-                'post' => $postContents,
+                'post' => $postContents, //todo markdown render
             ]
         );
     }
