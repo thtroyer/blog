@@ -6,7 +6,7 @@
 {% block body %}
 <div class="container">
     <h1>{{ title }}</h1>
-    <div id="contents">{{ post }}</div>
+    <div id="contents">{{ post | raw }}</div>
 </div>
 {%  endblock %}
 

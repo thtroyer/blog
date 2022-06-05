@@ -4,7 +4,9 @@ namespace App\Controller;
 
 
 use App\Entity\Article;
+use League\CommonMark\CommonMarkConverter;
 use Doctrine\ORM\EntityManagerInterface;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,11 +39,17 @@ class BlogController extends AbstractController
         $postName = $article->getTitle();
         $postContents = $article->getText();
 
+
+//        $converter = new GithubFlavoredMarkdownConverter([
+        $converter = new CommonMarkConverter([
+            'allow_unsafe_links' => false,
+        ]);
+
         return $this->render(
             'blogpost.html.twig',
             [
                 'title' => $postName,
-                'post' => $postContents, //todo markdown render
+                'post' => $converter->convert($postContents),
             ]
         );
     }
